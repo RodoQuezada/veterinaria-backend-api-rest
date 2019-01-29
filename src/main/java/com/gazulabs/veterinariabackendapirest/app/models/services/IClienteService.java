@@ -12,5 +12,6 @@ public interface IClienteService {
 
     ClienteDTO findClienteByNombre(String nombre);
 
+    ClienteDTO createNewClienteDto(ClienteDTO clienteDTO);
 
 }

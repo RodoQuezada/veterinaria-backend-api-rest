@@ -2,6 +2,7 @@ package com.gazulabs.veterinariabackendapirest.app.models.services.impl;
 
 import com.gazulabs.veterinariabackendapirest.app.api.v1.mapper.IClienteMapper;
 import com.gazulabs.veterinariabackendapirest.app.api.v1.models.ClienteDTO;
+import com.gazulabs.veterinariabackendapirest.app.models.entity.Cliente;
 import com.gazulabs.veterinariabackendapirest.app.models.repository.IClienteRepository;
 import com.gazulabs.veterinariabackendapirest.app.models.services.IClienteService;
 import org.springframework.stereotype.Service;
@@ -34,6 +35,14 @@ public class ClienteServiceImpl implements IClienteService {
     @Override
     public ClienteDTO findClienteByNombre(String nombre) {
         return clienteMapper.clienteToClienteDto(clienteRepository.findClienteByNombre(nombre));
+    }
+
+    @Override
+    public ClienteDTO createNewClienteDto(ClienteDTO clienteDTO) {
+         Cliente cliente = clienteMapper.clienteDtoToCliente(clienteDTO);
+         Cliente savedCliente = clienteRepository.save(cliente);
+         ClienteDTO returnCliente = clienteMapper.clienteToClienteDto(savedCliente);
+         return returnCliente;
     }
 
 

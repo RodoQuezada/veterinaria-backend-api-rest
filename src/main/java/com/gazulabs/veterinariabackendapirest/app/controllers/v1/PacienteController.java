@@ -23,4 +23,9 @@ public class PacienteController {
     public ResponseEntity<PacienteListDTO> getListofPacientes(){
         return new ResponseEntity<PacienteListDTO>(new PacienteListDTO(pacienteService.getAllPacientes()), HttpStatus.OK);
     }
+
+
+
+
+
 }

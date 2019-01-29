@@ -1,7 +1,6 @@
 package com.gazulabs.veterinariabackendapirest.app.controllers.v1;
 
 import com.gazulabs.veterinariabackendapirest.app.api.v1.models.ClienteDTO;
-import com.gazulabs.veterinariabackendapirest.app.api.v1.models.PacienteDTO;
 import com.gazulabs.veterinariabackendapirest.app.models.services.IClienteService;
 import org.junit.Before;
 import org.junit.Test;
@@ -17,14 +16,14 @@ import java.util.List;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasSize;
-import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-public class ClienteControllerTest {
+public class ClienteControllerTest extends AbstractRestControllerTest{
 
     public static final String NOMBRE = "Rodolfo";
 
@@ -80,4 +79,5 @@ public class ClienteControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.nombre", equalTo("rodolfo")));
     }
+
 }

@@ -6,12 +6,10 @@ import com.gazulabs.veterinariabackendapirest.app.models.services.IClienteServic
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("/api/v1/clientes/")
+@RequestMapping("/api/v1/clientes")
 public class ClienteController {
 
     private final IClienteService clienteService;
@@ -26,10 +24,15 @@ public class ClienteController {
                 new ClienteListDTO(clienteService.getAllCLientes()), HttpStatus.OK);
     }
 
-    @GetMapping("{nombre}")
+    @GetMapping("/{nombre}")
     public ResponseEntity<ClienteDTO> getClienteByNombre(@PathVariable String nombre){
         return new ResponseEntity<ClienteDTO>(
           clienteService.findClienteByNombre(nombre), HttpStatus.OK);
+    }
+
+    @PostMapping
+    public ResponseEntity<ClienteDTO> createNewCliente(@RequestBody ClienteDTO clienteDTO){
+        return new ResponseEntity<ClienteDTO>(clienteService.createNewClienteDto(clienteDTO), HttpStatus.CREATED);
     }
 
 }

@@ -12,5 +12,6 @@ public interface IClienteMapper {
 
     ClienteDTO clienteToClienteDto(Cliente cliente);
 
+    Cliente clienteDtoToCliente(ClienteDTO clienteDTO);
 
 }
