@@ -23,14 +23,14 @@ jobs:
     steps:
     - checkout
     - run:
-        name: Save test results
+        name: Save_test_results
         command: |
           mkdir -p ~/junit/
           find . -type f -regex ".*/target/surefire-reports/.*xml" -exec cp {} ~/junit/ \;
         when: always
-        - store_test_results:
+    - store_test_results:
             path: ~/junit
-        - store_artifacts:
+    - store_artifacts:
             path: ~/junit
 
     # Download and cache dependencies
